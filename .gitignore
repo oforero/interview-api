@@ -15,3 +15,7 @@
 
 # VIM files
 *.swp
+
+# Ignore compiled applications
+main
+api-main
