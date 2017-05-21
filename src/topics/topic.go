@@ -95,6 +95,10 @@ func Upvote(id string) error {
 	return nil
 }
 
+func GetTopicsAsJSON() ([]byte, error) {
+	return json.Marshal(db)
+}
+
 func EncodeToJSON(t *topic) string {
 	tjson, err := json.Marshal(t)
 	if err != nil {
