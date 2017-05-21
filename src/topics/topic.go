@@ -85,6 +85,16 @@ func compareUpAndSwap(ix int) {
 	}
 }
 
+func compareDownAndSwap(ix int) {
+	if ix == len(db)-1 {
+		return
+	}
+	ix_prev := ix + 1
+	if score(ix) < score(ix_prev) {
+		swap(ix, ix_prev)
+	}
+}
+
 func Upvote(id string) error {
 	tp, ix, err := getTopic(id)
 	if err != nil {
@@ -92,6 +102,16 @@ func Upvote(id string) error {
 	}
 	tp.upvotes = tp.upvotes + 1
 	compareUpAndSwap(ix)
+	return nil
+}
+
+func Downvote(id string) error {
+	tp, ix, err := getTopic(id)
+	if err != nil {
+		return err
+	}
+	tp.downvotes = tp.downvotes + 1
+	compareDownAndSwap(ix)
 	return nil
 }
 

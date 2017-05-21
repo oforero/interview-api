@@ -39,10 +39,20 @@ func UpvoteTopicHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write(tps)
 }
 
+func DownvoteTopicHandler(w http.ResponseWriter, r *http.Request) {
+	id := r.URL.Query().Get("id")
+	topics.Downvote(id)
+	tps, _ := topics.GetTopicsAsJSON()
+	w.WriteHeader(http.StatusOK)
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(tps)
+}
+
 func main() {
 	http.HandleFunc("/", HelloHandler)
 	http.HandleFunc("/topics", GetTopicsHandler)
 	http.HandleFunc("/topics/new", NewTopicHandler)
 	http.HandleFunc("/topics/upvote", UpvoteTopicHandler)
+	http.HandleFunc("/topics/downvote", DownvoteTopicHandler)
 	http.ListenAndServe(":8000", nil)
 }
