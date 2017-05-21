@@ -34,7 +34,7 @@ func NewTopic(msg string) *topic {
 	}
 	t := &topic{id, msg, 0, 0}
 	db = append(db, t)
-	index[t.Id] = len(db)
+	index[t.Id] = len(db) - 1
 	return t
 }
 
