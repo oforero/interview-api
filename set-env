@@ -1,2 +1,4 @@
 export GOROOT=/usr/local/Cellar/go/1.8/libexec
-export GOPATH=$PWD:$PWD/vendor
+export GOPATH=$PWD
+
+export GO15VENDOREXPERIMENT=1
