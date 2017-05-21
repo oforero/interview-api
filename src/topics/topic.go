@@ -8,10 +8,19 @@ import (
 )
 
 type topic struct {
-	Id        string
-	Msg       string
-	Upvotes   int
-	Downvotes int
+	id        string
+	msg       string
+	upvotes   int
+	downvotes int
+}
+
+func (t *topic) MarshalJSON() (b []byte, e error) {
+	return json.Marshal(map[string]interface{}{
+		"id":        t.id,
+		"msg":       t.msg,
+		"upvotes":   t.upvotes,
+		"downvotes": t.downvotes,
+	})
 }
 
 var index map[string]int
@@ -35,7 +44,7 @@ func NewTopic(msg string) *topic {
 	}
 	t := &topic{id, msg, 0, 0}
 	db = append(db, t)
-	index[t.Id] = len(db) - 1
+	index[t.id] = len(db) - 1
 	return t
 }
 
@@ -54,16 +63,16 @@ func GetTopic(id string) (*topic, error) {
 
 func score(ix int) int {
 	tp := db[ix]
-	return tp.Upvotes - tp.Downvotes
+	return tp.upvotes - tp.downvotes
 }
 
 func swap(ix1 int, ix2 int) {
 	tp1 := db[ix1]
 	tp2 := db[ix2]
 	db[ix1] = tp2
-	index[tp2.Id] = ix1
+	index[tp2.id] = ix1
 	db[ix2] = tp1
-	index[tp1.Id] = ix2
+	index[tp1.id] = ix2
 }
 
 func compareUpAndSwap(ix int) {
@@ -81,12 +90,12 @@ func Upvote(id string) error {
 	if err != nil {
 		return err
 	}
-	tp.Upvotes = tp.Upvotes + 1
+	tp.upvotes = tp.upvotes + 1
 	compareUpAndSwap(ix)
 	return nil
 }
 
-func EncodeToJSON(t topic) string {
+func EncodeToJSON(t *topic) string {
 	tjson, err := json.Marshal(t)
 	if err != nil {
 		panic(err)
