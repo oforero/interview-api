@@ -1,14 +1,15 @@
 package topics
 
 import (
+	"encoding/json"
 	"github.com/ventu-io/go-shortid"
 )
 
 type topic struct {
-	id        string
-	msg       string
-	upvotes   int
-	downvotes int
+	Id        string
+	Msg       string
+	Upvotes   int
+	Downvotes int
 }
 
 func init() {
@@ -25,4 +26,12 @@ func NewTopic(msg string) *topic {
 		panic(err)
 	}
 	return &topic{id, msg, 0, 0}
+}
+
+func EncodeToJSON(t topic) string {
+	tjson, err := json.Marshal(t)
+	if err != nil {
+		panic(err)
+	}
+	return string(tjson)
 }
