@@ -14,6 +14,16 @@ func TestConstructTopic(t *testing.T) {
 	}
 }
 
+func TestGetKnownTopic(t *testing.T) {
+	msg := "Test Topic"
+	tp := NewTopic(msg)
+	t.Logf("Got new message with id %v", tp.Id)
+	tp2 := GetTopic(tp.Id)
+	if tp != tp2 {
+		t.Errorf("Topic retrieval error: got %v want %v", tp2, tp)
+	}
+}
+
 func TestUniqueIds(t *testing.T) {
 	ids := make(map[string]int)
 	for i := 0; i < 10000; i++ {
