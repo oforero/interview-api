@@ -39,6 +39,19 @@ func TestUniqueIds(t *testing.T) {
 	}
 }
 
+func TestUpvoteTopic(t *testing.T) {
+	msg := "Test Topic"
+	tp := NewTopic(msg)
+	t.Logf("Got new message with id %v", tp.Id)
+	for i := 1; i < 10; i++ {
+		Upvote(tp.Id)
+		tp, _ = GetTopic(tp.Id)
+		if tp.Upvotes != i {
+			t.Errorf("Topic upvote error: got %v want %v", tp.Upvotes, i)
+		}
+	}
+}
+
 func TestJsonEncoding(t *testing.T) {
 	msg := "Test Topic"
 	tp := NewTopic(msg)
