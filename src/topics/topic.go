@@ -2,6 +2,7 @@ package topics
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"github.com/ventu-io/go-shortid"
 )
@@ -38,12 +39,12 @@ func NewTopic(msg string) *topic {
 	return t
 }
 
-func GetTopic(id string) *topic {
+func GetTopic(id string) (*topic, error) {
 	ix, ok := index[id]
 	if !ok {
-		panic(fmt.Sprintf("Topic with id (%v) not found", id))
+		return nil, errors.New(fmt.Sprintf("Topic with id (%v) not found", id))
 	}
-	return db[ix]
+	return db[ix], nil
 }
 
 func EncodeToJSON(t topic) string {

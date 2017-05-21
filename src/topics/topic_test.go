@@ -18,7 +18,10 @@ func TestGetKnownTopic(t *testing.T) {
 	msg := "Test Topic"
 	tp := NewTopic(msg)
 	t.Logf("Got new message with id %v", tp.Id)
-	tp2 := GetTopic(tp.Id)
+	tp2, err := GetTopic(tp.Id)
+	if err != nil {
+		t.Error(err)
+	}
 	if tp != tp2 {
 		t.Errorf("Topic retrieval error: got %v want %v", tp2, tp)
 	}
