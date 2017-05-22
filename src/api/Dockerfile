@@ -1,3 +1,3 @@
 FROM alpine
-ADD gopath/bin/api api
-ENTRYPOINT ["/api"]
+ADD gopath/api-server api-server
+ENTRYPOINT ["/api-server"]
