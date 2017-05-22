@@ -1,9 +1,9 @@
 steps:
   - name: 'gcr.io/cloud-builders/go'
-    args: ['get', 'get github.com/dghubble/sling']
+    args: ['get', 'github.com/dghubble/sling']
   
   - name: 'gcr.io/cloud-builders/go'
-    args: ['get', 'get github.com/yosssi/ace']
+    args: ['get', 'github.com/yosssi/ace']
   
   - name: "gcr.io/cloud-builders/go"
     env: ["PROJECT_ROOT=interview-api"]
