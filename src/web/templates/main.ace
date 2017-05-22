@@ -16,11 +16,13 @@ body
         tr
           td {{ $topic.ID }}
           td {{ $topic.Msg }}
-          td {{ $topic.Upvotes }}
-          td {{ $topic.Downvotes }}
+          td {{ $topic.Upvotes }} 
+            a href="/upvote?id={{ $topic.ID }}" 👍
+          td {{ $topic.Downvotes }} 
+            a href="downvote?id={{ $topic.ID }}" 👎
       {{ end }}
     div
-      form action="/newtopic" method="get"
+      form action="newtopic" method="get"
         p What do you want to share today?
         input type="text" name="msg"
         input type="submit" value="Submit"

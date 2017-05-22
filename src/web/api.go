@@ -46,5 +46,32 @@ func (s *DiggService) NewTopic(msg string) error {
 		fmt.Println("Error creating topic")
 	}
 	return err
+}
 
+func (s *DiggService) Upvote(id string) error {
+	var params struct {
+		ID string `url:"id"`
+	}
+
+	params.ID = id
+	fmt.Printf("digg.Upvote(%v)\n", params)
+	_, err := s.sling.New().Get("topics/upvote").QueryStruct(params).ReceiveSuccess(nil)
+	if err != nil {
+		fmt.Println("Error upvoting topic")
+	}
+	return err
+}
+
+func (s *DiggService) Downvote(id string) error {
+	var params struct {
+		ID string `url:"id"`
+	}
+
+	params.ID = id
+	fmt.Printf("digg.Downvote(%v)\n", params)
+	_, err := s.sling.New().Get("topics/downvote").QueryStruct(params).ReceiveSuccess(nil)
+	if err != nil {
+		fmt.Println("Error upvoting topic")
+	}
+	return err
 }
