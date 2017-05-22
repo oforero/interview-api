@@ -11,7 +11,7 @@ steps:
     id: "go-build"
 
   - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-f", "src/web/Dockerfile", "-t", "gcr.io/${PROJECT_ID}/api-server:${TAG_NAME}", "."]
+    args: ["build", "-f", "src/web/Dockerfile", "-t", "gcr.io/${PROJECT_ID}/web-server:${TAG_NAME}", "."]
     id: "docker-build"
 
 images: ["gcr.io/${PROJECT_ID}/web-server:$TAG_NAME"]
