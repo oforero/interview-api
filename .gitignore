@@ -21,6 +21,10 @@ main
 api-main
 web-main
 
+# Ignore Go working directories
+bin
+pkg
+
 # Ignore GitHub libraries (required until setting up propper vendoring)
 github.com
 

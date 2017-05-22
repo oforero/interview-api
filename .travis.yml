@@ -2,3 +2,8 @@ language: go
 
 go:
     - 1.8.1
+
+install:
+    - github.com/ventu-io/go-shortid
+    - github.com/dghubble/sling
+    - github.com/yosssi/ace
