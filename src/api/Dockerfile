@@ -1,3 +1,4 @@
 FROM alpine
-ADD gopath/api-server api-server
+ADD api-server api-server
+EXPOSE 8000
 ENTRYPOINT ["/api-server"]
