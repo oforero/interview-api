@@ -1,4 +1,7 @@
 steps:
+  - name: 'gcr.io/$PROJECT_ID/go'
+    args: ['get', 'github.com/ventu-io/go-shortid']
+  
   - name: "gcr.io/cloud-builders/go"
     env: ["PROJECT_ROOT=interview-api"]
     args: ["install", "api"]
