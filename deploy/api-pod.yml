@@ -8,6 +8,6 @@ metadata:
 spec:
   containers: 
   - name: api-server
-    image: "gcr.io/carousell-167810/api-server:api-0.0.5"
+    image: "gcr.io/carousell-167810/api-server:api-0.0.7"
     ports:
     - containerPort: 8000 
