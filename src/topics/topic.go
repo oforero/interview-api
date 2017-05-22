@@ -80,6 +80,9 @@ func compareUpAndSwap(ix int) {
 		return
 	}
 	ix_prev := ix - 1
+	for ix_prev > 0 && score(ix_prev) < score(ix) {
+		ix_prev = ix_prev - 1
+	}
 	if score(ix_prev) < score(ix) {
 		swap(ix_prev, ix)
 	}
@@ -90,6 +93,9 @@ func compareDownAndSwap(ix int) {
 		return
 	}
 	ix_prev := ix + 1
+	for ix_prev < len(db)-1 && score(ix) < score(ix_prev) {
+		ix_prev = ix_prev + 1
+	}
 	if score(ix) < score(ix_prev) {
 		swap(ix, ix_prev)
 	}
