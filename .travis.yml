@@ -8,4 +8,4 @@ install:
     - go get github.com/dghubble/sling
     - go get github.com/yosssi/ace
 
- go_import_path: github.com/oforero/interview-api
+go_import_path: github.com/oforero/interview-api
