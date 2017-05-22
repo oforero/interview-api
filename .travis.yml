@@ -7,5 +7,4 @@ install:
     - go get github.com/ventu-io/go-shortid
     - go get github.com/dghubble/sling
     - go get github.com/yosssi/ace
-
-go_import_path: github.com/oforero/interview-api
+    - export GOPATH=$PWD:$GOPATH
