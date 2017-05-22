@@ -5,16 +5,22 @@ head
   title Topic Reader
 body
   h1 Topic Reader
-  table border=1
-    tr
-      th ID
-      th Message
-      th Upvotes
-      th Downvotes
-    {{ range $topic := . }}
+  div
+    table border=1
       tr
-        td {{ $topic.ID }}
-        td {{ $topic.Msg }}
-        td {{ $topic.Upvotes }}
-        td {{ $topic.Downvotes }}
-    {{ end }}
+        th ID
+        th Message
+        th Upvotes
+        th Downvotes
+      {{ range $topic := . }}
+        tr
+          td {{ $topic.ID }}
+          td {{ $topic.Msg }}
+          td {{ $topic.Upvotes }}
+          td {{ $topic.Downvotes }}
+      {{ end }}
+    div
+      form action="/newtopic" method="get"
+        p What do you want to share today?
+        input type="text" name="msg"
+        input type="submit" value="Submit"

@@ -23,3 +23,4 @@ web-main
 
 # Ignore GitHub libraries (required until setting up propper vendoring)
 github.com
+
