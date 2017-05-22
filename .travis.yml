@@ -4,6 +4,6 @@ go:
     - 1.8.1
 
 install:
-    - github.com/ventu-io/go-shortid
-    - github.com/dghubble/sling
-    - github.com/yosssi/ace
+    - go get github.com/ventu-io/go-shortid
+    - go get github.com/dghubble/sling
+    - go get github.com/yosssi/ace
