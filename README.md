@@ -47,8 +47,11 @@ The application is deployable using kubectl, provided the Google SDK is installe
 The current deployment scripts are standard kubernetes files, but accessing the image requires access to Google Container Registry.
 
 > $ kubectl create -f deploy/api-pod.yml 
+
 > $ kubectl create -f deploy/api-svc.yml 
+
 > $ kubectl create -f deploy/web-pod.yml 
+
 > $ kubectl create -f deploy/web-svc.yml 
 
 
